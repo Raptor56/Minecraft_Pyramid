@@ -11,7 +11,7 @@ if num1>32:
     mc.postToChat("No,create.")
     sys.exit()
 else:
-    mc.postToChat("Let's"+str(num1)+"pyramid!!")
+    mc.postToChat("Let's "+str(num1)+" pyramid!!")
 
 #　ピラミッドの作成
 pos_x, pos_y, pos_z = map(int,mc.player.getPos()) # 現在位置の取得
