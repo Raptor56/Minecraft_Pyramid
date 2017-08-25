@@ -10,30 +10,13 @@ num1 = int(num1)
 if num1>32:
     mc.postToChat("No,create.")
     sys.exit()
-   
 else:
     mc.postToChat("Let's"+str(num1)+"pyramid!!")
 
-num2 = num1 + 1
-
-lList = [0 for l in range(num2)] #とりあえず枠つくっといて
-   
-n = 0
-for k in range(num1+1):
-    L = k + n - 1
-    lList[k] = L
-    k = k + 1
-    n = n + 1
-
-lList=lList[1:num1+1]
-lList.reverse()
-
 #　ピラミッドの作成
-pos_x, pos_y, pos_z = mc.player.getPos() # 現在位置の取得
+pos_x, pos_y, pos_z = map(int,mc.player.getPos()) # 現在位置の取得
 
-for i in range(num1):
-    l = lList[i]
-    mc.setBlocks(pos_x, pos_y, pos_z, pos_x + l - 1, pos_y, pos_z +l - 1, 1)
-    pos_x = pos_x + 1
-    pos_y = pos_y + 1
-    pos_z = pos_z + 1
+mc.player.setPos(pos_x + 0.5, pos_y + num1 + 2, pos_z + 0.5)
+
+for i in range(num1-1,-1,-1):
+    mc.setBlocks(pos_x - i, pos_y + (num1 - i - 1), pos_z - i, pos_x + i, pos_y + (num1 - i - 1), pos_z + i, 1)
